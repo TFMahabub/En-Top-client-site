@@ -4,7 +4,7 @@ import Navbar from './Header-Section/Navbar';
 
 const MainOutlet = () => {
   return (
-    <div className='relative'>
+    <div className='font-Montserrat'>
       <Navbar></Navbar>
       <Outlet></Outlet>
     </div>
