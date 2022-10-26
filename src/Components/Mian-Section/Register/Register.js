@@ -1,11 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Contexts/UserContext';
 import SignUpWithMedia from './SignUpWithMedia';
 
+
 const Register = () => {
-  const { signUp } = useContext(AuthContext)
+  const { user, signUp, updateUserProfile, userEmailVarification } = useContext(AuthContext)
 
   const handleOnSubmit = e =>{
     e.preventDefault();
@@ -17,9 +19,66 @@ const Register = () => {
 
     signUp(email, password)
     .then(result =>{
+      toast.success('User Create Successfully!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+      updateUserProfile(fullName)
+      .then(()=>{
+        console.log(user?.displayName);
+        userEmailVarification()
+        .then(() =>{
+          toast.warn('Please check your email and varify!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        })
+      })
+
+      //display name save error-
+      .catch(() =>{
+        toast.error('Display Name save failed!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      })
       console.log(result.user);
+      form.reset()
     })
-    .catch(error => console.error(error))
+
+    //user create error-
+    .catch(error => {
+      console.error(error)
+      toast.error('Somethig is wrong', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    })
 
   }
   return (
@@ -41,7 +100,7 @@ const Register = () => {
           type="text" 
           name='fullName' 
           placeholder='Enter your full name' 
-          required />
+           />
         </div>
 
 
@@ -69,9 +128,9 @@ const Register = () => {
           placeholder='Enter your password' 
           required />
         </div>
-        
+
         <button
-        className='bg-darkBlue px-6 py-[8px] mt-5 text-lg rounded-md font-medium text-[#fff]'
+        className='bg-darkBlue px-6 py-[8px] mt-3 text-lg rounded-md font-medium text-[#fff]'
         >
           Sign Up
         </button>
