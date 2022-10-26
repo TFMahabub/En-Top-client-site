@@ -1,13 +1,17 @@
+import { getAuth, sendEmailVerification } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import app from '../../../firebase/firebase.config';
 import { AuthContext } from '../../Contexts/UserContext';
 import SignUpWithMedia from './SignUpWithMedia';
 
+const auth = getAuth(app)
+
 
 const Register = () => {
-  const { user, signUp, updateUserProfile, userEmailVarification } = useContext(AuthContext)
+  const { user, signUp, updateUserProfile } = useContext(AuthContext)
 
   const handleOnSubmit = e =>{
     e.preventDefault();
@@ -31,12 +35,13 @@ const Register = () => {
         });
 
       updateUserProfile(fullName)
-      .then(()=>{
-        console.log(user?.displayName);
-        userEmailVarification()
+      .then(result=>{
+        
+        //send Email varification-
+        sendEmailVerification(auth.currentUser)
         .then(() =>{
-          toast.warn('Please check your email and varify!', {
-            position: "top-right",
+          toast.warn('Please check your email to varify!', {
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -47,19 +52,9 @@ const Register = () => {
             });
         })
       })
-
       //display name save error-
-      .catch(() =>{
-        toast.error('Display Name save failed!', {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
+      .catch(error =>{
+          console.error(error)
       })
       console.log(result.user);
       form.reset()

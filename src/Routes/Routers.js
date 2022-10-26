@@ -6,6 +6,7 @@ import FAQ from "../Components/Mian-Section/FAQ/FAQ";
 import Home from "../Components/Mian-Section/Home/Home";
 import Login from "../Components/Mian-Section/Login/Login";
 import Register from "../Components/Mian-Section/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const routers = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const routers = createBrowserRouter([
       },
       {
         path: '/courses',
-        element: <Course />
+        element: <PrivateRoute><Course /></PrivateRoute>
       },
       {
         path: '/faq',

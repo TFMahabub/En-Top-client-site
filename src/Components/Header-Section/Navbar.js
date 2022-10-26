@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import logo from '../../img/logo.png'
 import { BiUserCircle } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
-import HamburgerMenu from '../../img/HamburgerMenu.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Contexts/UserContext';
 import { toast } from 'react-toastify';
@@ -27,6 +26,7 @@ const Navbar = () => {
         progress: undefined,
         theme: "light",
         });
+        <Navigate to ='/' />
       })
     .catch(error =>{
       toast.error('User sign out failed!', {
@@ -63,7 +63,12 @@ const Navbar = () => {
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/faq'>FAQ</Link>
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/blog'>Blog</Link>
           {user?.displayName && <h4 className='inline font-semibold text-black'>{user.displayName}</h4>}
-          < BiUserCircle  className='text-[40px] inline cursor-pointer text-darkBlue'/>
+          {
+            user?.photoURL?
+            <img className='inline w-10 rounded-full' src={user.photoURL} alt="" />
+            :
+            < BiUserCircle  className='text-[40px] inline cursor-pointer text-darkBlue'/>
+          }
           {
             user?.uid?
             <button
