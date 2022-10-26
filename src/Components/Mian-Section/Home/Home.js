@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import bannerImage from '../../../img/Home-page-illustration.png'
 
 const Home = () => {
   return (
     <section
-    className='h-[520px]'
+    className='md:h-[520px]'
       >
       <div 
       className='flex flex-col-reverse md:flex-row px-4 md:px-0
@@ -12,12 +13,12 @@ const Home = () => {
       >
         <div className='md:w-1/2 text-center md:text-left'>
           <h3 
-          className='text-2xl font-Montserrat font-semibold text-black'
+          className='text-lg md:text-2xl font-Montserrat font-semibold text-black'
           >
           Start your favourite course
           </h3>
           <h2
-          className='text-4xl font-Montserrat font-bold text-darkBlue mt-4 md:mt-0 tracking-wide'
+          className='text-xl md:text-4xl font-Montserrat font-bold text-darkBlue mt-4 md:mt-0 tracking-wide'
           >
           Now learning from anywhere, and build your bright career.
           </h2>
@@ -31,7 +32,10 @@ const Home = () => {
           </div>
         </div>
         <div>
-          <h3>Start your favourite course</h3>
+          <img 
+          className='w-[350px] mt-3 lg:mr-16 md:mt-0'
+          src={bannerImage} alt="" 
+          />
         </div>
       </div>
     </section>
