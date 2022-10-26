@@ -23,7 +23,7 @@ const SingleCard = ({course}) => {
           <p className='text-md font-normal'>{lectures}</p>
         </div>
       </div>
-      <Link to ={`/course_details/${_id}`}>
+      <Link to ={`/course/${_id}`}>
         <button
         className='w-full mt-3 bg-darkBlue hover:bg-black rounded-md py-2 text-[#fff]'
         >

@@ -33,7 +33,7 @@ const Home = () => {
         </div>
         <div>
           <img 
-          className='w-[350px] mt-3 lg:mr-16 md:mt-0'
+          className='w-[370px] mt-3 lg:mr-16 md:mt-0'
           src={bannerImage} alt="" 
           />
         </div>

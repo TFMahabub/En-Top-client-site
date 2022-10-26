@@ -34,13 +34,13 @@ const SignUpWithMedia = () => {
     <>
      <button
      onClick={handleGoogleSignIn}
-     className='mt-5 w-full border border-darkBlue rounded-full py-3 flex items-center justify-center
+     className='mt-5 w-full border border-darkBlue rounded-full py-2 flex items-center justify-center
                 text-md font-semibold text-darkBlue'
      >
       <FaGoogle className='mr-2 text-2xl'/> Login With Google
      </button>
      <button
-     className='mt-3 w-full border border-darkBlue rounded-full py-3 flex items-center justify-center
+     className='mt-3 w-full border border-darkBlue rounded-full py-2 flex items-center justify-center
                 text-md font-semibold text-darkBlue'
      >
       <FaGithub className='mr-2 text-2xl'/> Login With Github
