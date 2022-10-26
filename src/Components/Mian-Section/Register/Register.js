@@ -1,12 +1,34 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UserContext';
+import SignUpWithMedia from './SignUpWithMedia';
 
 const Register = () => {
+  const { signUp } = useContext(AuthContext)
+
+  const handleOnSubmit = e =>{
+    e.preventDefault();
+
+    const form = e.target;
+    const fullName = form.fullName.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signUp(email, password)
+    .then(result =>{
+      console.log(result.user);
+    })
+    .catch(error => console.error(error))
+
+  }
   return (
     <div className='container mx-auto px-3 md:px-0'>
-      <h2 className='text-center mt-16 text-3xl font-bold text-darkBlue'>Create your account</h2>
+      <h2 className='text-center mt-10 text-3xl font-bold text-darkBlue'>Create your account</h2>
       <h5 className='text-center text-[19px] font-medium text-black'><small>Already registered? <Link to ='/login' className='text-darkBlue'>Log In</Link></small></h5>
+
       <form 
+      onSubmit={handleOnSubmit}
       className='border border-darkBlue rounded max-w-sm mt-6 mx-auto p-5'
       action=""
       >
@@ -53,7 +75,7 @@ const Register = () => {
         >
           Sign Up
         </button>
-
+      <SignUpWithMedia></SignUpWithMedia>
       </form>
     </div>
   );
