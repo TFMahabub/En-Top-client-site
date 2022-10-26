@@ -63,19 +63,21 @@ const Navbar = () => {
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/faq'>FAQ</Link>
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/blog'>Blog</Link>
           {user?.displayName && <h4 className='inline font-semibold text-black'>{user.displayName}</h4>}
+
           {
             user?.photoURL?
             <img className='inline w-10 rounded-full' src={user.photoURL} alt="" />
             :
             < BiUserCircle  className='text-[40px] inline cursor-pointer text-darkBlue'/>
           }
+          
           {
             user?.uid?
             <button
             onClick={handleSignOut} 
-            className='bg-darkBlue px-6 py-2 text-[#fff] rounded-lg' to= '/login'>Sign out</button>
+            className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg' to= '/login'>Sign out</button>
             :
-            <Link className='bg-darkBlue px-6 py-2 text-[#fff] rounded-lg' to= '/login'>Login</Link>
+            <Link className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg' to= '/login'>Login</Link>
           }
         </div>
         <div className='md:hidden'>

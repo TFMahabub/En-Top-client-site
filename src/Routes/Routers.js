@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainOutlet from "../Components/MainOutlet";
 import Blog from "../Components/Mian-Section/Blog/Blog";
+import CourseDetails from "../Components/Mian-Section/Courses/Card-Section/CourseDetails";
 import Course from "../Components/Mian-Section/Courses/Course";
 import FAQ from "../Components/Mian-Section/FAQ/FAQ";
 import Home from "../Components/Mian-Section/Home/Home";
@@ -19,7 +20,17 @@ export const routers = createBrowserRouter([
       },
       {
         path: '/courses',
+        loader: () =>{
+          return fetch('https://en-top-server-tfmahabub.vercel.app/courses')
+        },
         element: <PrivateRoute><Course /></PrivateRoute>
+      },
+      {
+        path: '/courses/:id',
+        loader: ({params}) =>{
+          return fetch(`https://en-top-server-tfmahabub.vercel.app/courses/${params.id}`)
+        },
+        element: <CourseDetails />
       },
       {
         path: '/faq',

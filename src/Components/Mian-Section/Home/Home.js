@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <section
-    className='h-[520px] bg-lightBlue'
+    className='h-[520px]'
       >
       <div 
       className='flex flex-col-reverse md:flex-row px-4 md:px-0
