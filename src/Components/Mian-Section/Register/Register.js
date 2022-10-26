@@ -125,7 +125,7 @@ const Register = () => {
         </div>
 
         <button
-        className='bg-darkBlue px-6 py-[8px] mt-3 text-lg rounded-md font-medium text-[#fff]'
+        className='bg-darkBlue w-full py-[8px] mt-5 text-lg rounded-md font-medium text-[#fff]'
         >
           Sign Up
         </button>

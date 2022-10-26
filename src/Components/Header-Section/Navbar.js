@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import logo from '../../img/logo.png'
-import { BiUserCircle } from "react-icons/bi";
+import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useContext } from 'react';
 import { AuthContext } from '../Contexts/UserContext';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [darkMood, setDarkMood] = useState(false)
 
   const { user, signOutUser } =useContext(AuthContext)
+
 
   console.log(user);
 
@@ -26,7 +29,7 @@ const Navbar = () => {
         progress: undefined,
         theme: "light",
         });
-        <Navigate to ='/' />
+        <Navigate to ='/home' />
       })
     .catch(error =>{
       toast.error('User sign out failed!', {
@@ -49,11 +52,11 @@ const Navbar = () => {
       className='flex items-center justify-between container mx-auto
                 border-y border-darkBlue py-3 px-4 md:px-0  my-4'
       >
-        <div>
+        <Link to ='/'>
           <img
           className='w-40'
           src={logo} alt="" />
-        </div>
+        </Link>
         <div 
         className='text-md font-medium space-x-4 
                     hidden md:block'
@@ -63,14 +66,16 @@ const Navbar = () => {
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/faq'>FAQ</Link>
           <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/blog'>Blog</Link>
           {user?.displayName && <h4 className='inline font-semibold text-black'>{user.displayName}</h4>}
-
-          {
-            user?.photoURL?
-            <img className='inline w-10 rounded-full' src={user.photoURL} alt="" />
-            :
-            < BiUserCircle  className='text-[40px] inline cursor-pointer text-darkBlue'/>
-          }
           
+          {user?.photoURL && <img className='inline w-10 rounded-full' src={user.photoURL} alt="" />}
+          
+          {
+            darkMood?
+            <MdLightMode onClick={() => setDarkMood(!darkMood)} className= 'inline text-2xl text-darkBlue cursor-pointer'/>
+            :
+            <MdOutlineLightMode onClick={() => setDarkMood(!darkMood)} className= 'inline text-2xl text-darkBlue cursor-pointer'/>
+          }
+
           {
             user?.uid?
             <button
