@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, } from 'react-router-dom';
 import logo from '../../img/logo.png'
 import { MdLightMode, MdOutlineLightMode } from "react-icons/md";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,11 +10,8 @@ import { useState } from 'react';
 
 const Navbar = () => {
   const [darkMood, setDarkMood] = useState(false)
-
   const { user, signOutUser } =useContext(AuthContext)
 
-
-  console.log(user);
 
   const handleSignOut = () =>{
     signOutUser()
@@ -29,7 +26,7 @@ const Navbar = () => {
         progress: undefined,
         theme: "light",
         });
-        <Navigate to ='/home' />
+        <Navigate to ='/login' />
       })
     .catch(error =>{
       toast.error('User sign out failed!', {
@@ -54,20 +51,24 @@ const Navbar = () => {
       >
         <Link to ='/'>
           <img
-          className='w-40'
+          className='w-28 md:w-40'
           src={logo} alt="" />
         </Link>
+
+
         <div 
-        className='text-md font-medium space-x-4 
-                    hidden md:block'
+        className={`text-md font-medium space-x-4 
+                   hidden md:block`}
         >
-          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/'>Home</Link>
-          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/courses'>Courses</Link>
-          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/faq'>FAQ</Link>
-          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold' to= '/blog'>Blog</Link>
+          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold ' to= '/'>Home</Link>
+          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold ' to= '/courses'>Courses</Link>
+          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold ' to= '/faq'>FAQ</Link>
+          <Link className='hover:border-b-2 pb-1 text-darkBlue font-semibold ' to= '/blog'>Blog</Link>
           {user?.displayName && <h4 className='inline font-semibold text-black'>{user.displayName}</h4>}
           
-          {user?.photoURL && <img className='inline w-10 rounded-full' src={user.photoURL} alt="" />}
+
+          
+          {user?.photoURL && <img className='inline w-10 rounded-full' title={user?.displayName} src={user.photoURL} alt="" />}
           
           {
             darkMood?
@@ -80,9 +81,9 @@ const Navbar = () => {
             user?.uid?
             <button
             onClick={handleSignOut} 
-            className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg' to= '/login'>Sign out</button>
+            className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg' >Sign out</button>
             :
-            <Link className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg' to= '/login'>Login</Link>
+            <Link to= '/login'><button className='bg-darkBlue px-4 py-2 text-[#fff] rounded-lg border-none'>Login</button></Link>
           }
         </div>
         <div className='md:hidden'>

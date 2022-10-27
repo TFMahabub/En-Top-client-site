@@ -10,7 +10,7 @@ const SingleCard = ({course}) => {
 
   return (
     <div 
-    className='border border-darkBlue p-2 rounded-lg'
+    className='border-[1px] border-darkLightBlue p-2 rounded-lg'
     >
       <img 
       src={image_url}

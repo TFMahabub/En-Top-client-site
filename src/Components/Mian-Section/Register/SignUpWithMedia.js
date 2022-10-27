@@ -5,15 +5,46 @@ import { AuthContext } from '../../Contexts/UserContext';
 //react-toastify-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUpWithMedia = () => {
-  const { user, signInWithGoogle } = useContext(AuthContext);
+  const { user, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || "/";
+
 
   const handleGoogleSignIn = () =>{
     signInWithGoogle()
     .then(result =>{
-      console.log(result.user);
       toast.success('User Login Successfully with Google!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+        navigate(from, { replace: true });
+    })
+    .catch(error => {
+      console.error(error)
+
+    })
+
+  }
+
+
+  const handleGithubSignIn = () =>{
+    console.log('button clicked');
+    signInWithGithub()
+    .then(result =>{
+      console.log(result.user);
+      toast.success('User Login Successfully with Github!', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -26,7 +57,6 @@ const SignUpWithMedia = () => {
     })
     .catch(error => {
       console.error(error)
-
     })
 
   }
@@ -39,7 +69,10 @@ const SignUpWithMedia = () => {
      >
       <FaGoogle className='mr-2 text-2xl'/> Login With Google
      </button>
+
+
      <button
+     onClick={handleGithubSignIn}
      className='mt-3 w-full border border-darkBlue rounded-full py-2 flex items-center justify-center
                 text-md font-semibold text-darkBlue'
      >

@@ -2,7 +2,6 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import logo from '../../../img/logo.png'
 import { AuthContext } from '../../Contexts/UserContext';
 import SignUpWithMedia from '../Register/SignUpWithMedia';
 

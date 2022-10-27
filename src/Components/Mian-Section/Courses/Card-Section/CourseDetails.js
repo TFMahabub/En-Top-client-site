@@ -8,7 +8,6 @@ const CourseDetails = () => {
 
   const { image_url, title, _id, rating, lectures, course_fee, course_duration, category_id } = clickedCourse;
 
-  console.log(clickedCourse);
   return (
     <section className='container max-w-xl mx-auto'>
       <img className='w-full' src={image_url} alt="" />
