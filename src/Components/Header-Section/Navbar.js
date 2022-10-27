@@ -42,7 +42,6 @@ const Navbar = () => {
      })
   }
 
-
   return (
     <nav className='relative w-full'>
       <div 

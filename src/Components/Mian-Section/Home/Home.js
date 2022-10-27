@@ -8,7 +8,7 @@ const Home = () => {
     className='md:h-[520px]'
       >
       <div 
-      className='flex flex-col-reverse md:flex-row px-4 md:px-0
+      className='flex flex-col-reverse md:flex-row px-4 md:px-13 lg:px-20
                   items-center justify-evenly md:justify-between container mx-auto h-[520px]'
       >
         <div className='md:w-1/2 text-center md:text-left'>
@@ -33,7 +33,7 @@ const Home = () => {
         </div>
         <div>
           <img 
-          className='w-[370px] mt-3 lg:mr-16 md:mt-0'
+          className='w-[370px]'
           src={bannerImage} alt="" 
           />
         </div>

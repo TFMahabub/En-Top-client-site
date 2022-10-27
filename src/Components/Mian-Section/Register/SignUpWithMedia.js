@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUpWithMedia = () => {
-  const { signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { setLoading,signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -43,6 +43,9 @@ const SignUpWithMedia = () => {
         progress: undefined,
         theme: "light",
         });
+    })
+    .finally(() => {
+      setLoading(false);
     })
 
   }

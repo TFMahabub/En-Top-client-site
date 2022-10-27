@@ -6,7 +6,7 @@ import { AuthContext } from '../../Contexts/UserContext';
 import SignUpWithMedia from '../Register/SignUpWithMedia';
 
 const Login = () => {
-  const { logInUser } = useContext(AuthContext)
+  const { setLoading, logInUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -48,16 +48,19 @@ const Login = () => {
         theme: "light",
         });
     })
+    .finally(() => {
+      setLoading(false);
+    })
   }
 
 
   return (
     <div className='container mx-auto px-3 md:px-0'>
-      <h2 className='text-center mt-16 text-3xl font-bold text-darkBlue'>Please LogIn</h2>
+      <h2 className='text-center mt-10 text-3xl font-bold text-darkBlue'>Please LogIn</h2>
       <h5 className='text-center text-[19px] font-medium text-black'><small>Haven't account? <Link to ='/register' className='text-darkBlue'>Register</Link></small></h5>
       <form 
       onSubmit={handleOnSubmit}
-      className='border border-darkBlue rounded max-w-sm mt-6 mx-auto p-5'
+      className='border border-darkBlue rounded max-w-sm mt-3 mx-auto p-5'
       action=""
       >
 

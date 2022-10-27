@@ -11,7 +11,7 @@ const auth = getAuth(app)
 
 
 const Register = () => {
-  const { user, signUp, updateUserProfile } = useContext(AuthContext)
+  const { signUp, updateUserProfile } = useContext(AuthContext)
 
   const handleOnSubmit = e =>{
     e.preventDefault();
@@ -20,6 +20,7 @@ const Register = () => {
     const fullName = form.fullName.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photoUrl = form.photoUrl.value;
 
     signUp(email, password)
     .then(result =>{
@@ -34,7 +35,7 @@ const Register = () => {
         theme: "light",
         });
 
-      updateUserProfile(fullName)
+      updateUserProfile(fullName, photoUrl)
       .then(result=>{
         
         //send Email varification-
@@ -55,6 +56,16 @@ const Register = () => {
       //display name save error-
       .catch(error =>{
           console.error(error)
+          toast.error('Display name saved field!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
       })
       console.log(result.user);
       form.reset()
@@ -83,11 +94,24 @@ const Register = () => {
 
       <form 
       onSubmit={handleOnSubmit}
-      className='border border-darkBlue rounded max-w-sm mt-6 mx-auto p-5'
+      className='border border-darkBlue rounded max-w-sm mt-3 mx-auto p-5'
       action=""
       >
+
         <div
         className=''
+        >
+          <label htmlFor="" className='block font-semibold'>Photo URL:</label>
+          <input 
+          className='rounded-md font-medium w-full border-darkBlue focus:ring-black'
+          type="text" 
+          name='photoUrl' 
+          placeholder='Enter your photo url' 
+           />
+        </div>
+
+        <div
+        className='mt-5'
         >
           <label htmlFor="" className='block font-semibold'>Full Name:</label>
           <input 

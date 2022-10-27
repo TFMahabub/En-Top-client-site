@@ -53,13 +53,13 @@ const UserContext = ({children}) => {
   }
 
   //update profile-
-  const updateUserProfile = fullName =>{
+  const updateUserProfile = (fullName, photo) =>{
     setLoading(true)
     return updateProfile(auth.currentUser, {
-      displayName: fullName
+      displayName: fullName,
+      photoURL: photo
     })
   }
-
 
 
   useEffect(() =>{
@@ -74,7 +74,7 @@ const UserContext = ({children}) => {
 
 
   const authInfo = { user, signUp, logInUser, signOutUser, signInWithGoogle,
-    updateUserProfile, loading, signInWithGithub
+    updateUserProfile, loading, signInWithGithub, setLoading
   };
   return (
     <AuthContext.Provider value={authInfo}>
