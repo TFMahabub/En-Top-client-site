@@ -153,7 +153,6 @@ const Register = () => {
         >
           Sign Up
         </button>
-      <SignUpWithMedia></SignUpWithMedia>
       </form>
     </div>
   );

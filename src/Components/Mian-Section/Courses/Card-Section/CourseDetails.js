@@ -8,7 +8,7 @@ import Pdf from "react-to-pdf";
 const CourseDetails = () => {
   const clickedCourse = useLoaderData();
 
-  const { image_url, title, rating, lectures, course_fee, course_duration } = clickedCourse;
+  const { image_url, title, rating, lectures, course_fee, course_duration, description } = clickedCourse;
 
   const ref = React.createRef();
   
@@ -18,10 +18,14 @@ const CourseDetails = () => {
       <div ref={ref} className='container max-w-lg mx-auto'>
         <img className='w-full' src={image_url} alt="" />
         <div className=''>
-          <h2 className='mt-6 text-3xl font-semibold'>{title}</h2>
+          <h2 className='mt-6 text-3xl text-black font-semibold'>{title}</h2>
           <div className='flex items-center justify-between mt-4'>
             <p className='bg-lightBlue px-8 py-1 rounded-lg flex items-center text-lg font-medium'><AiFillStar className='mr-1 text-darkBlue text-xl'/>{rating?.number}</p>
             <p className='bg-lightBlue px-8 py-1 rounded-lg flex items-center text-lg font-medium'><TbBook className='mr-1 text-darkBlue text-2xl'/>{lectures}</p>
+          </div>
+          <div className='mt-4'>
+            <p className='text-lg font-semibold text-black'>Description: </p>
+            <span className='block font-medium text-[#7e7e7e]'>{description}</span>
           </div>
           <div className='text-darkBlue text-center px-16 py-2 rounded-lg bg-lightBlue mt-5 flex justify-between items-center'>
             <h2 className='text-2xl font-semibold'>{course_fee}</h2>
