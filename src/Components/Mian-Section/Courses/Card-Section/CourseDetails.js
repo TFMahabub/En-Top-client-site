@@ -8,11 +8,11 @@ import Pdf from "react-to-pdf";
 const CourseDetails = () => {
   const clickedCourse = useLoaderData();
 
-  const { image_url, title, rating, lectures, course_fee, course_duration, description } = clickedCourse;
+  const { image_url, _id, title, rating, lectures, course_fee, course_duration, description } = clickedCourse;
 
+  //for download PDF file-
   const ref = React.createRef();
   
-
   return (
     <section className=''>
       <div ref={ref} className='container max-w-lg mx-auto'>
@@ -36,7 +36,7 @@ const CourseDetails = () => {
             {({ toPdf }) => <button onClick={toPdf} className='text-darkBlue text-center px-16 w-full py-2 rounded-lg bg-lightBlue mt-5 text-lg font-medium'>
               Download PDF</button>}
         </Pdf>
-        <Link to ='/checkout'><button className='mt-6 bg-darkBlue w-full text-lg font-medium text-[#fff] py-2 rounded-lg mb-16'>Get Premium Access</button></Link>
+        <Link to ={`/checkout/${_id}`}><button className='mt-6 bg-darkBlue w-full text-lg font-medium text-[#fff] py-2 rounded-lg mb-16'>Get Premium Access</button></Link>
       </div>
     </section>
   );

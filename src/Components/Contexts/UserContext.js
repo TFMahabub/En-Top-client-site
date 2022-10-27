@@ -14,10 +14,6 @@ const auth = getAuth(app)
 export const AuthContext = createContext()
 
 
-
-
-
-
 const UserContext = ({children}) => {
   const [user, setUser] = useState('')
   const [loading, setLoading] = useState(true)
@@ -70,7 +66,6 @@ const UserContext = ({children}) => {
 
     return () => unsubscribe()
   },[])
-
 
 
   const authInfo = { user, signUp, logInUser, signOutUser, signInWithGoogle,

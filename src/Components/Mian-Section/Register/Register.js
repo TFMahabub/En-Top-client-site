@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import app from '../../../firebase/firebase.config';
 import { AuthContext } from '../../Contexts/UserContext';
-import SignUpWithMedia from './SignUpWithMedia';
 
 const auth = getAuth(app)
 

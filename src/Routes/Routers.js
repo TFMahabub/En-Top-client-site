@@ -35,7 +35,10 @@ export const routers = createBrowserRouter([
         element: <CourseDetails />
       },
       {
-        path: '/checkout',
+        path: '/checkout/:id',
+        loader: ({params}) =>{
+          return fetch(`https://en-top-server-tfmahabub.vercel.app/course/${params.id}`)
+        },
         element: <PrivateRoute><CheckOut /></PrivateRoute>
       },
       {
