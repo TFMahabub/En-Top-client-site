@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../Contexts/UserContext';
 //react-toastify-
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignUpWithMedia = () => {
-  const { user, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+  const { signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
   const navigate = useNavigate()
   const location = useLocation()
