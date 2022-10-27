@@ -21,12 +21,12 @@ const CheckOut = () => {
         }
         <div>
           <h2 className=' text-lg font-semibold text-darkBlue'>Name: {displayName}</h2>
-          <p className='mt-3 text-sm font-medium'>Email: {email}</p>
+          <p className='mt-1 text-sm font-medium'>Email: {email}</p>
           {
             emailVerified?
-              <p className='mt-3 text-sm font-medium'>Email-Varification: <span className='text-darkBlue font-medium'>Varified</span></p>
+              <p className='mt-1 text-sm font-medium'>Email-Varification: <span className='text-darkBlue font-medium'>Varified</span></p>
               :
-              <p className='mt-3 text-sm font-medium'>Email-Varification: <span className='font-medium text-[#dd0808]'>Not-Varified</span></p>
+              <p className='mt-1 text-sm font-medium'>Email-Varification: <span className='font-medium text-[#dd0808]'>Not-Varified</span></p>
           }
           <div className="mt-6 space-y-1">
             <h2 className="text-xl font-semibold text-darkBlue">Selected Course:</h2>
