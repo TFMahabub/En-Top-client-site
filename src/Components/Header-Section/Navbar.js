@@ -43,7 +43,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='relative w-full'>
+    <nav className=''>
       <div 
       className='flex items-center justify-between container mx-auto
                 border-y border-darkBlue py-3 px-4 md:px-0  my-4'
